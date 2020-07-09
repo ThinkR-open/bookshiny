@@ -1,0 +1,40 @@
+Package: bookshiny
+Title: An Amazing Shiny App
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "firstname",
+           family = "lastname",
+           role = c("aut", "cre"),
+           email = "your@email.com")
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Imports: 
+    bs4Dash,
+    config,
+    DBI,
+    dplyr,
+    DT,
+    emo,
+    future,
+    ggplot2,
+    glue,
+    golem (>= 0.2.1.9022),
+    graysacle (>= 0.0.0.9000),
+    htmltools,
+    lubridate,
+    magrittr,
+    promises,
+    RPostgres,
+    RSQLite,
+    shinipsum (>= 0.0.0.9000),
+    shiny,
+    shinythemes
+Suggests: 
+    testthat
+Remotes: 
+    Cervangirard/graysacle,
+    thinkr-open/golem,
+    Thinkr-open/shinipsum
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.0

@@ -1,0 +1,12 @@
+name: database2
+title: database
+username: Cervan
+account: Cervan
+server: connect.thinkr.fr
+hostUrl: http://connect.thinkr.fr/__api__
+appId: 286
+bundleId: 994
+url: http://connect.thinkr.fr/database/
+when: 1594197064.04443
+asMultiple: FALSE
+asStatic: FALSE
