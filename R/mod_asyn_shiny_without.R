@@ -55,9 +55,6 @@ mod_asyn_shiny_without_ui <- function(id){
           "See what's happen with {promises} and {future}",
           href = "http://connect.thinkr.fr/with_f_p")
       )
-    ),
-    shiny_busy(
-      id = ns("async_shiny")
     )
   )
 }
@@ -72,13 +69,13 @@ mod_asyn_shiny_without_server <- function(input, output, session){
   
   observeEvent( input$generate , {
     ## Simulate long process
-    golem::invoke_js("showid", ns("async_shiny"))
+    showNotification(
+      p("Your application is blocked by the generation of the graphic"),
+      closeButton = FALSE)
     
     Sys.sleep(5)
     
     local$plot <- shinipsum::random_ggplot()
-    
-    golem::invoke_js("hideid", ns("async_shiny"))
     
   })
   

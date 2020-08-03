@@ -43,10 +43,11 @@ mod_asyn_shiny_with_ui <- function(id){
         a_bttn(
           "See what's happen without {promises} and {future}",
           href = "http://connect.thinkr.fr/without_p_f")
-          
+        
       )
-    ),
-    shiny_busy_not_blocking(id = ns("async_shiny"))
+    )#,
+    # shiny_busy_not_blocking(id = ns("async_shiny"))
+    
   )
 }
 
@@ -62,38 +63,42 @@ mod_asyn_shiny_with_server <- function(input, output, session){
   
   observeEvent( input$generate , {
     ## Simulate long process
-    golem::invoke_js("showid", ns("async_shiny"))
+    
     future({
+      
       Sys.sleep(5)
       shinipsum::random_ggplot()
     }) %...>%
       (function(e){
-        golem::invoke_js("hideid", ns("async_shiny"))
+        
         local$plot <- e 
       }) %...!%
       (function(e){
         warning(e)
       })
+  
+  showNotification(
+    p("The graphic is calculated but you can still use the application"),
+    closeButton = FALSE)
     
-    message("Done !")
-    
-  }, ignoreInit = TRUE)
+  message("Done !")
   
-  observeEvent( input$lignes , {
-    local$table <-  iris %>%
-      sample_n(input$lignes)
-  })
-  
-  
-  output$graph <- renderPlot({
-    req(local$plot)
-    local$plot
-    # test()
-  })
-  
-  output$table <- renderTable({
-    local$table
-  })
+}, ignoreInit = TRUE)
+
+observeEvent( input$lignes , {
+  local$table <-  iris %>%
+    sample_n(input$lignes)
+})
+
+
+output$graph <- renderPlot({
+  req(local$plot)
+  local$plot
+})
+
+output$table <- renderTable({
+  local$table
+})
 }
 
 ## To be copied in the UI

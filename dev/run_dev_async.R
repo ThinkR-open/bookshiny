@@ -16,13 +16,13 @@ library(shiny)
 # plan(multisession)
 ui <- fluidPage(
   # golem_add_external_resources(),
-  mod_asyn_shiny_with_ui("async")
+  mod_asyn_shiny_without_ui("async")
 )
 
 server <- function(input, output, session) {
   
   
-  callModule(mod_asyn_shiny_with_server, "async")
+  callModule(mod_asyn_shiny_without_server, "async")
 }
 
 shinyApp(ui, server)
