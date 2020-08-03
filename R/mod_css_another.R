@@ -29,19 +29,22 @@ mod_css_another_ui <- function(id){
                                                           p("This is a example :D.", class= "text-white")
                                                    )
                                                  ),
-                                                 img(src ="www/assets/img/ipad.png", class = "img-fluid"),
+                                                 div(
+                                                   plotOutput(ns("home")),
+                                                   class = "img-fluid"),
                                                  dark = TRUE),
                  graysacle::graysacle_section_bg(ns("projects"),
-                                                 graysacle::graysacle_one_project_img("www/assets/img/bg-signup.jpg",
-                                                                                      title = "One project",
-                                                                                      description = "Example of conponent for one project", dark = TRUE),
-                                                 # galery
-                                                 graysacle::graysacle_projects_img("www/assets/img/demo-image-01.jpg", title = "First image", "Beautiful image", img_first = TRUE),
-                                                 graysacle::graysacle_projects_img("www/assets/img/demo-image-02.jpg", title = "Second image", "Beautiful second image", img_first = FALSE),
                                                  graysacle::graysacle_projects(
-                                                   plotOutput(ns("plot")
-                                                   ),
-                                                   title = "A plot", description = "Iris.... Always iris...", first = TRUE)
+                                                   br(),
+                                                   plotOutput(ns("plot")),
+                                                   title = "A plot",
+                                                   description = "Iris.... Always iris...",
+                                                   first = FALSE),
+                                                 graysacle::graysacle_projects(
+                                                   tableOutput(ns("table")),
+                                                   title = "A table",
+                                                   description = "About mtcars... What's next ? Airquality ? ....",
+                                                   first = TRUE)
                  ),
                  graysacle::graysacle_section_bg(ns("contact"),
                                                  dark = TRUE,
@@ -69,8 +72,17 @@ mod_css_another_server <- function(input, output, session){
   ns <- session$ns
   
   output$plot <- renderPlot({
-    message("ok")
+    
     plot(iris)
+  })
+  
+  output$table <- renderTable(rownames = TRUE, hover = TRUE,{
+    mtcars[1:10, 1:5]
+  })
+  
+  
+  output$home <- renderPlot({
+    shinipsum::random_ggplot()
   })
   
 }

@@ -14,7 +14,7 @@ Imports:
     DBI,
     dplyr,
     DT,
-    emo,
+    emo (>= 0.0.0.9000),
     future,
     ggplot2,
     glue,
@@ -34,7 +34,8 @@ Suggests:
 Remotes: 
     Cervangirard/graysacle,
     thinkr-open/golem,
-    Thinkr-open/shinipsum
+    Thinkr-open/shinipsum,
+    hadley/emo
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1

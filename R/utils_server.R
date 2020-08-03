@@ -13,19 +13,20 @@ connect_db <- function(dev = golem::app_dev()){
       con <- NULL
     }
   }else{
+    config <- bookshiny::get_golem_config(config = "production", value = "database")
     ask <- DBI::dbCanConnect(RPostgres::Postgres(),
-                             dbname = 'postgres', 
-                             host = 'postgre',
-                             port = 5432, 
-                             user = 'postgres',
-                             password = 'docker')
+                             dbname = config$dbname, 
+                             host = config$host,
+                             port = config$port, 
+                             user = config$user,
+                             password = config$password)
     if(ask){
       con <- DBI::dbConnect(RPostgres::Postgres(),
-                            dbname = 'postgres', 
-                            host = 'postgre',
-                            port = 5432, 
-                            user = 'postgres',
-                            password = 'docker')
+                            dbname = config$dbname, 
+                            host = config$host,
+                            port = config$port, 
+                            user = config$user,
+                            password = config$password)
     }else{
       con <- NULL
     }
