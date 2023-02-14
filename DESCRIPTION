@@ -2,10 +2,7 @@ Package: bookshiny
 Title: An Amazing Shiny App
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "firstname",
-           family = "lastname",
-           role = c("aut", "cre"),
-           email = "your@email.com")
+    person("firstname", "lastname", , "your@email.com", role = c("aut", "cre"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Imports: 
@@ -33,9 +30,9 @@ Suggests:
     testthat
 Remotes: 
     Cervangirard/graysacle,
+    hadley/emo,
     thinkr-open/golem,
-    Thinkr-open/shinipsum,
-    hadley/emo
+    Thinkr-open/shinipsum
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3
