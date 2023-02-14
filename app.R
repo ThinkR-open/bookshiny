@@ -4,6 +4,6 @@
 library(golem)
 pkgload::load_all()
 options("golem.app.prod" = FALSE)
-get(
+base::get(
   Sys.getenv("RUN_APP_FUNCTION", "run_app_css_graysacle")
 )()
